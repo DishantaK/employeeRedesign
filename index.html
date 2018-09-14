@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="reset.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" />
+    <title>Employee Lookup</title>
+</head>
+
+<body>
+    <div id="content">
+        <aside>
+            
+                <header>
+                        <i class="far fa-address-book fa-lg "></i>
+                        <h1> SIMPLICITY </h1>
+                </header>
+            <nav>
+                <ul>
+                    <a href="#" id="print"> <li>Print</li> </a>
+                    <a href="#" id="verify"> <li>Verify</li></a>
+                    <a href="#" id="lookup"> <li>Lookup</li></a>
+                    <a href="#" id="contains"> <li>Contains</li> </a>
+                    <a href="#" id="update"> <li>Update</li> </a>
+                    <a href="#" id="add"> <li>Add</li> </a>
+                    <a href="#" id="delete"> <li>Delete</li> </a>
+                </ul>
+            </nav>
+       
+        </aside>
+      
+        <main>
+            <header>
+            <h1 id="homeheader" class="styleone two"> Welcome to <em>Simplicity </em></h1>
+            <h2 class="styleone two">The Minimalist Directory. </h2>
+            </header>
+            <section class="command print" id="printSection"></section>
+
+            <section class="command verify">
+                <form>
+
+                    <input type="text" class="search-input" placeholder="enter employee name" autocomplete="off" id="verifyName" />
+                    <label for="verifyName"> <a href="#verify" class="submit" id="verifySubmit"><i class="fas fa-search"></i></a></label>
+
+                </form>
+                
+            </section>
+
+
+            <section id="" class="command lookup">
+                <form>
+                    <input type="text" class="search-input" autocomplete="off" id="checkLookup" />
+                    <label for="checkLookup">  <a href="#lookup" class="submit" id="submitLookup"><i class="fas fa-search"></i></a></label>
+                </form>
+
+                
+            </section>
+
+
+            <section id="" class="command contains">
+                <form>
+                    <input type="text" class="search-input" id="checkContains" />
+                    <label for="checkContains"><a href="#contains" class="submit" id="submitContains"><i class="fas fa-search"></i></a></label>
+                </form>
+
+
+                
+            </section>
+
+
+            <section id="" class="command update">
+                <form>
+                    <label for="nameUpdate" class="label"> Name: </label>
+                    <input type="text" class="add-input" autocomplete="off" id="nameUpdate" />
+                    <br />
+                    <label for="numberUpdate" class="label"> Number: </label>
+                    <input type="text" class="add-input" autocomplete="off" id="numberUpdate" />
+                    <br />
+                    <label for="phoneUpdate" class="label"> Phone: </label>
+                    <input type="text" class="add-input" autocomplete="off" id="phoneUpdate" />
+
+                    <a href="#update" class="submit center" id="submitUpdate"><p>Update</p></a>
+
+                </form>
+
+                
+            </section>
+
+
+            <section id="" class="command add">
+
+                <form>
+                   
+                    <label for="nameUpdate" class="label"> Name: </label>
+                    <input type="text" class="add-input" autocomplete="off" id="nameAdd" />
+                    <br />
+                    <label for="numberUpdate" class="label"> Number: </label>
+                    <input type="text" class="add-input" autocomplete="off" id="numberAdd" />
+                    <br />
+                    <label for="phoneUpdate" class="label"> Phone: </label>
+                    <input type="text" class="add-input" autocomplete="off" id="phoneAdd" />
+
+                    <a href="#add" class="submit center" id="submitAdd"><p>Add</p></a>
+
+                </form>
+                
+            </section>
+
+
+            <section id="" class="command delete">
+                <form>
+                    <input type="text" class="search-input" placeholder="delete employee data" autocomplete="off" id="employeeDelete" />
+                    <label for="verifyName"> <a href="#delete" class="submit" id="deleteSubmit"> Delete</a></label>
+
+                </form>
+
+                
+            </section>
+            <section id="job-board"> </section>
+        </main>
+
+    </div>
+    <script src="dom.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
