@@ -41,173 +41,26 @@ const employeeList = [
     }
   ];
   
-  
+  // Storage 
+  let nameEntry ='';
+  let nameContains = '';
+  let nameMatch ='';
   let command = '' ;
   let rightStuff ='';
-  
+  let str = 'Employee Not Found';
+
+
   let render = function (rightStuff) {
     $('#job-board').html(rightStuff);
   }
   
-  let renderSecond = function (rightStuff) {
-    $('.print').html(rightStuff);
-  }
-  
-  
-  
-  ///////////////Test loop
-  
-  
-  
-  //command check display content
-  
-  const commandCheck = function () {
-   
-  
-   if (command === 'print') {
-  
-    
-    for (i = 0; i < employeeList.length; i++) {
-    
-      rightStuff += `<p>${employeeList[i].name}</p>`;
-      rightStuff +=`<p>${employeeList[i].officeNum}</p>`;
-      rightStuff +=`<p>${employeeList[i].phoneNum}</p>`;
-    }
-  
-    render(rightStuff);
-  
-  }
-  
-  else if  (command === 'verify')  {
-   
-    let nameEntry = $('#verifyName').val();
-    console.log('name', nameEntry) ;
-    let str = 'false'
-     for (i = 0; i < employeeList.length; i++) {
-      let nameMatch = employeeList[i].name;
-            
-      if (nameMatch === nameEntry) {
-        str ='true';
-      }
-  
-      
-    }
-      render(str);
-  
-   
-  }
-  
-  
-  else if (command === 'lookup') {
-    let nameEntry = $('#checkLookup').val();
-    let nameMatch = function () {
-    for (i = 0; i < employeeList.length; i++) {
-      let nameContains = employeeList[i].name;
-            
-      if (nameContains === nameEntry) {
-        render(employeeList[i].name +`<br />`+ employeeList[i].officeNum +`<br />`+ employeeList[i].phoneNum);
-      }
-      }
-  }
-  $('#submitLookup').on('click', nameMatch);
-  }
-  
-  
-  else if (command === 'contains') {
-    let nameEntry = $('#checkContains').val();
-      let nameMatch = function () {
-        for (i = 0; i < employeeList.length; i++) {
-          let nameContains = employeeList[i].name;
-                
-          if (nameContains.includes(nameEntry)) {
-            render(employeeList[i].name +`<br />`+ employeeList[i].officeNum +`<br />`+ employeeList[i].phoneNum);
-           
-          }
-          }
-      }
-      $('#submitContains').on('click', nameMatch);
-  
-  }
-  
-  else if (command === 'update')  {
-   
-    const namePrompt = $('#nameUpdate').val();
-    const fieldPrompt = $('#numberUpdate').val();
-    const valuePrompt = $('#phoneUpdate').val();
-    
-    let updatePerson = function () {
-  
-      for (i = 0; i < employeeList.length; i++) {
-        let nameContains = employeeList[i].name;
-              
-        if (nameContains === namePrompt) {
-          employeeList[i].name = namePrompt;
-          employeeList[i].officeNum = fieldPrompt;
-          employeeList[i].phoneNum = valuePrompt;
-        }
-        render(employeeList[i].name +`<br />`+ employeeList[i].officeNum +`<br />`+ employeeList[i].phoneNum);
-      }
-      
-    }
-    $('#submitUpdate').on('click', updatePerson);
-  }
-  
-  
-   else if (command === 'add') {
-    const namePrompt = $('#nameAdd').val();
-    const fieldPrompt = $('#numberAdd').val();
-    const valuePrompt = $('#phoneAdd').val();
-  
-    let newEmployee = new Object();
-  
-      newEmployee.name = namePrompt;
-      newEmployee.officeNum = fieldPrompt;
-      newEmployee.phoneNum = valuePrompt;
-      employeeList.push(newEmployee);
-   
-     for (i = 0; i < employeeList.length; i++) {
-      console.log(employeeList[i].name);
-      console.log(employeeList[i].officeNum);
-      console.log(employeeList[i].phoneNum);
-    }
-    
-    $('#submitAdd').on('click', newEmployee);
-  }
-  else if (command === 'delete') {
-    const namePrompt = $('#employeeDelete').val();
-  
-    let findIndexEmployee = function () { 
-      
-      return employeeList.findIndex(namePrompt); }
-    const removeEmployee = function () {
-      employeeList.splice(findIndexEmployee, 1);
-    }
-  
-  $('#deleteSubmit').on('click', removeEmployee);
-  
-  for (i = 0; i < employeeList.length; i++) {
-    console.log(employeeList[i].name);
-    console.log(employeeList[i].officeNum);
-    console.log(employeeList[i].phoneNum);
-  } 
-  }
-  
-  }
-  
-  
-  //
-  
-  
-  
+
   // Callbacks for Click event
   
   const print = function (event) {
     event.preventDefault();
     command = 'print';
     $('.print').addClass('appear');
-  
-    
-  
     //remove other visible
   
     $('.verify').removeClass('appear');
@@ -216,18 +69,11 @@ const employeeList = [
     $('.add').removeClass('appear');
     $('.delete').removeClass('appear');
     $('.contains').removeClass('appear');
-    $('#homeheader').style.display = 'none';
-    $('#homesubheader').addClass('twoTarget');
-    
-  
-  
-    
+    $('#homeheader').addClass('noHeader');
+    $('main').addClass('twoTarget');
     commandCheck();
-    
-  
   }
   
-  ////////
   
   const verify = function () {
     event.preventDefault();
@@ -242,19 +88,13 @@ const employeeList = [
     $('.delete').removeClass('appear');
     $('.contains').removeClass('appear');
     $('.print').html('');
-   
+    $('#homeheader').addClass('noHeader');
+    $('main').addClass('twoTarget');
     
-    //Show verify
-  
-  
-  
-    
-  
-   
+
   }
   
   
-  ////////////
   const lookup = function () {
     command = 'lookup';
     $('.lookup').addClass('appear');
@@ -266,11 +106,12 @@ const employeeList = [
     $('.add').removeClass('appear');
     $('.delete').removeClass('appear');
     $('.contains').removeClass('appear');
-  
+    $('#homeheader').addClass('noHeader');
+    $('main').addClass('twoTarget');
+    
   }
   
-  
-  ////////////
+
   
   const contains = function () {
     command = 'contains';
@@ -283,10 +124,11 @@ const employeeList = [
     $('.add').removeClass('appear');
     $('.delete').removeClass('appear');
     $('.verify').removeClass('appear');
-  
+    $('#homeheader').addClass('noHeader');
+    $('main').addClass('twoTarget');
+    
   }
   
-  ///////////
   const add = function () {
     command = 'add';
     $('.add').addClass('appear');
@@ -298,9 +140,11 @@ const employeeList = [
     $('.lookup').removeClass('appear');
     $('.delete').removeClass('appear');
     $('.contains').removeClass('appear');
+    $('#homeheader').addClass('noHeader');
+    $('main').addClass('twoTarget');
     
   }
-  /////////
+  /////////update
   const update = function () {
     command = 'update';
     $('.update').addClass('appear');
@@ -312,10 +156,11 @@ const employeeList = [
     $('.add').removeClass('appear');
     $('.delete').removeClass('appear');
     $('.contains').removeClass('appear');
-   
+    $('#homeheader').addClass('noHeader');
+    $('main').addClass('twoTarget');
+    
   }
     
-  ////////////
   const deleteStuff = function () {
     command = 'delete';
     $('.delete').addClass('appear');
@@ -327,9 +172,105 @@ const employeeList = [
     $('.add').removeClass('appear');
     $('.lookup').removeClass('appear');
     $('.contains').removeClass('appear');
-  
+    $('#homeheader').addClass('noHeader');
+    $('main').addClass('twoTarget');
+    
   }
   
+
+  //////////////////  Commands
+
+const commandCheck = function () {
+  switch (command) {
+    case 'print':
+        employeeList.forEach(employee => 
+          {( rightStuff += employee.name +`<br/>`+ employee.officeNum +`<br/>`+employee.phoneNum +`<br/>`) });
+        render(rightStuff);
+
+        break;
+        case 'verify':
+        nameEntry = $('#verifyName').val();
+        nameMatch = employeeList.find(function(name) {if (name.name === nameEntry) str ='Employee Found';});
+        render(str);
+        $('#verifySubmit').on('click', nameMatch);
+    
+  
+    break;
+    case 'lookup':
+        nameEntry = $('#checkLookup').val();
+        nameMatch = employeeList.find(function(employee) {if (employee.name === nameEntry) {str = employee.name +`<br/>`+ employee.officeNum +`<br/>`+employee.phoneNum +`<br/>`}
+        else {
+          str = 'Employee Not Found';
+        }
+        });
+        render(str);
+        $('#submitLookup').on('click', nameMatch);
+    
+    break;
+    case 'contains':
+        nameEntry = $('#checkContains').val();
+        str = '';
+        nameContains = employeeList.filter(employee => employee.name.includes(nameEntry)); 
+        if (nameContains.length >= 1) {
+          nameContains.forEach(employee => {str += employee.name +`<br/>`+ employee.officeNum +`<br/>`+ employee.phoneNum +`<br/>` });
+        }
+        else {
+          str = 'Employee not found';
+        }
+        render(str);
+   
+    $('#submitContains').on('click', nameContains);
+    break;
+    case 'add':
+         let nameCatch = $('#nameAdd').val();
+         let fieldPrompt = $('#numberAdd').val();
+         let valuePrompt = $('#phoneAdd').val();
+         let newEmployee = new Object();
+        newEmployee.name = nameCatch;
+        newEmployee.officeNum = fieldPrompt;
+        newEmployee.phoneNum = valuePrompt;
+        employeeList.push(newEmployee);
+    
+        $('#submitAdd').on('click', newEmployee);
+        employeeList.forEach(employee => {render(employee.name +`<br/>`+ employee.officeNum +`<br/>`+ employee.phoneNum +`<br/>` )}); //Since it replaces each time it will only display last
+
+    
+    break;
+    case 'update':
+          nameSwitch = $('#nameUpdate').val();
+          fieldSwitch = $('#numberUpdate').val();
+          valueSwitch = $('#phoneUpdate').val();
+          
+          let updatePerson = employeeList.find(function(employee) {if (employee.name === nameSwitch) 
+            { employee.name = nameSwitch;
+              employee.officeNum = fieldSwitch;
+              employee.phoneNum = valueSwitch;}
+          else {str = 'Employee Not Found';}
+          render(employee.name +`<br />`+ employee.officeNum +`<br />`+ employee.phoneNum);
+          });
+
+    $('#submitUpdate').on('click', updatePerson);
+    
+     
+    break;
+    case 'delete':
+    console.log('delete works');
+    str = '';
+    let nameStore = $('#employeeDelete').val();
+    let findIndexEmployee = function () {return employeeList.findIndex(nameStore); }
+    const removeEmployee = function () {employeeList.splice(findIndexEmployee, 1) }
+    $('#deleteSubmit').on('click', removeEmployee);
+      
+   if (employeeList.name === nameStore) 
+   {str = employee.name +`<br/>`+ employee.officeNum +`<br/>`+employee.phoneNum +`<br/>`}
+    else { str = 'Employee Deleted';}
+    render(str);
+    break;
+    };
+
+
+}
+
   
   //Events
   
@@ -344,4 +285,6 @@ const employeeList = [
   
   $('.submit').on('click', commandCheck);
   
-  
+ 
+
+    

@@ -42,7 +42,7 @@
             <section class="command print" id="printSection"></section>
 
             <section class="command verify">
-                <form>
+                <form id="formVerify">
 
                     <input type="text" class="search-input" placeholder="enter employee name" autocomplete="off" id="verifyName" />
                     <label for="verifyName"> <a href="#verify" class="submit" id="verifySubmit"><i class="fas fa-search"></i></a></label>
@@ -53,7 +53,7 @@
 
 
             <section id="" class="command lookup">
-                <form>
+                <form id="formLookup">
                     <input type="text" class="search-input" autocomplete="off" id="checkLookup" />
                     <label for="checkLookup">  <a href="#lookup" class="submit" id="submitLookup"><i class="fas fa-search"></i></a></label>
                 </form>
@@ -63,7 +63,7 @@
 
 
             <section id="" class="command contains">
-                <form>
+                <form id="formContains">
                     <input type="text" class="search-input" id="checkContains" />
                     <label for="checkContains"><a href="#contains" class="submit" id="submitContains"><i class="fas fa-search"></i></a></label>
                 </form>
@@ -74,7 +74,7 @@
 
 
             <section id="" class="command update">
-                <form>
+                <form id="formUpdate">
                     <label for="nameUpdate" class="label"> Name: </label>
                     <input type="text" class="add-input" autocomplete="off" id="nameUpdate" />
                     <br />
@@ -84,7 +84,7 @@
                     <label for="phoneUpdate" class="label"> Phone: </label>
                     <input type="text" class="add-input" autocomplete="off" id="phoneUpdate" />
 
-                    <a href="#update" class="submit center" id="submitUpdate"><p>Update</p></a>
+                    <button form="formUpdate" type="submit" formaction="#update" class="submit center" id="submitUpdate">Update</button>
 
                 </form>
 
@@ -94,7 +94,7 @@
 
             <section id="" class="command add">
 
-                <form>
+                <form id="formAdd">
                    
                     <label for="nameUpdate" class="label"> Name: </label>
                     <input type="text" class="add-input" autocomplete="off" id="nameAdd" />
@@ -106,6 +106,7 @@
                     <input type="text" class="add-input" autocomplete="off" id="phoneAdd" />
 
                     <a href="#add" class="submit center" id="submitAdd"><p>Add</p></a>
+                    <button form="formAdd" type="submit" formaction="#add" class="submit center" id="submitAdd">Add</button>
 
                 </form>
                 
@@ -113,10 +114,11 @@
 
 
             <section id="" class="command delete">
-                <form>
+                <form id="formDelete">
                     <input type="text" class="search-input" placeholder="delete employee data" autocomplete="off" id="employeeDelete" />
-                    <label for="verifyName"> <a href="#delete" class="submit" id="deleteSubmit"> Delete</a></label>
+                    
 
+                    <button form="formDelete" type="submit" formaction="#delete" class="submit" id="deleteSubmit">Delete</button>
                 </form>
 
                 
