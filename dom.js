@@ -48,7 +48,7 @@ const $ = function (sel) {
       p.textContent = content;
       document.getElementById('job-board').appendChild(p);
     }
-  
+  //
   const empty = function () {
     for (let i = 0; i < nodeList.length; i++) {
       nodeList[i].innerHTML = '';
